@@ -13,7 +13,7 @@ class TwitterController extends Controller
             env('TWITTER_API_KEY'),
             env('TWITTER_API_SECRET_KEY'),
             env('TWITTER_ACCESS_TOKEN'),
-            env('TWITTER_ACCESS_TOKEN_SERET')
+            env('TWITTER_ACCESS_TOKEN_SECRET')
         );
 
         $hais = [
