@@ -9,7 +9,6 @@ class TwitterController extends Controller
 {
     public function tweet()
     {
-        ddd(env('TWITTER_API_KEY'));
         $twitter = new TwitterOAuth(
             env('TWITTER_API_KEY'),
             env('TWITTER_API_SECRET_KEY'),
