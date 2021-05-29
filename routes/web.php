@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/twi_auto_Bot', [TwitterController::class, 'tweet']);
+Route::get('/twi_auto_bot', [TwitterController::class, 'tweet']);
