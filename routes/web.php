@@ -1,8 +1,10 @@
 <?php
 
-
+use App\Http\Controllers\TwitterController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\TwitterController;
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/twi_auto_Bot', [TwitterController::class, 'tweet']);
