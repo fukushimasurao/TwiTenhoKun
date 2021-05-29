@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/tenho-tweet', [TwitterController::class, 'tweet']);
+Route::get('/tenho-react', [TwitterController::class, 'tweet']);
