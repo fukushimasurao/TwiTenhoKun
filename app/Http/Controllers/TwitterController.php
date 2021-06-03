@@ -98,13 +98,16 @@ class TwitterController extends Controller
 
         // 'timezone' => 'UTC',
         foreach ($twitter->get("statuses/mentions_timeline", ["count" => "100"]) as $value) {
-            $now = strtotime('now');
-            $tweetTime = strtotime($value->created_at);
-            // 10分以上前の返信には返さない。
-            if (($now - $tweetTime) < 600) {
-                $getReSortHais = TwitterController::getReSortHais();
-                $rp = $twitter->post("statuses/update", ["status" => "@" . $value->user->screen_name . $getReSortHais, "in_reply_to_status_id" => $value->id]);
-                $fav = $twitter->post("favorites/create", ["id" => $value->id]);
+            // 配牌の文字列が含まれる場合だけ対応
+            if (strpos($value->text, '配牌') !== false) {
+                $now = strtotime('now');
+                $tweetTime = strtotime($value->created_at);
+                // 10分以上前の返信には返さない。
+                if (($now - $tweetTime) < 600) {
+                    $getReSortHais = TwitterController::getReSortHais();
+                    $rp = $twitter->post("statuses/update", ["status" => "@" . $value->user->screen_name . $getReSortHais, "in_reply_to_status_id" => $value->id]);
+                    $fav = $twitter->post("favorites/create", ["id" => $value->id]);
+                }
             }
         }
     }
